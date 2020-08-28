@@ -26,7 +26,7 @@ services:
     restart: always
     volumes:
       - ./noaa_gefs_config:/noaa/config
-      - /efi_neon_challenge/NOAA_GEFS:/noaa/data
+      - /efi_neon_challenge/drivers/NOAA_GEFS:/noaa/data
 
   rstudio:
     image: rocker/geospatial
