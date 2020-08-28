@@ -1,0 +1,51 @@
+version: '2.3'
+
+services:
+  caddy:
+    image: caddy
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./.caddy/:/data
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+
+  minio: 
+    image: minio/minio
+    command: server /data
+    restart: always
+    volumes:
+      - /efi_neon_challenge:/data    
+    env_file: minio_env.sh
+
+  noaa_gefs:
+    image: rqthomas/noaa_gefs_download_downscale
+    restart: always
+    volumes:
+      - ./noaa_gefs_config:/noaa/config
+      - /efi_neon_challenge/NOAA_GEFS:/noaa/data
+
+  rstudio:
+    image: rocker/geospatial
+    restart: always
+    volumes:
+      - /efi_neon_challenge/users:/home
+    env_file: ./private_env.sh
+
+  shiny:
+    image: rocker/shiny-verse
+    restart: always
+
+  ## not necessary, just for convenience 
+  monitor:
+    image: netdata/netdata  
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    security-opt: apparmor=unconfined
+
