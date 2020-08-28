@@ -38,6 +38,11 @@ services:
   shiny:
     image: rocker/shiny-verse
     restart: always
+    ports: 
+      - 3838:3838
+    volumes:
+      - ./shinyapps/:/srv/shiny-server
+      - ./shinylog/:/var/log/shiny-server
 
   ## not necessary, just for convenience 
   monitor:
@@ -51,4 +56,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     security_opt: 
       - apparmor=unconfined
-
+    ports:
+      - 19999:19999
