@@ -17,7 +17,7 @@ All services are defined by Docker Containers, as specified in [`docker-compose.
 
 ## User-facing addresses
 
-- https://minio.ecoforecast.org  (Data portal, see below)
+- https://data.ecoforecast.org  (Data portal, see below)
 - https://status.ecoforecast.org (netdata monitoring of server capacity)
 - https://shiny.ecoforcast.org
 - https://rstudio.ecoforecast.org
