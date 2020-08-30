@@ -24,8 +24,10 @@ All services are defined by Docker Containers, as specified in [`docker-compose.
 
 ## Data buckets:
 
-- https://minio.ecoforecast.org/NOAA_GEFS  Download-only portal of NOAA products.  
-- https://minio.ecoforecast.org/submissions Upload-only portal for submissions
-
+- https://data.ecoforecast.org/NOAA_GEFS  Download-only portal of NOAA products.  
+- https://data.ecoforecast.org/submissions Upload-only portal for submissions
+- https://data.ecoforecast.org/targets Target variables, derived from raw NEON data
+- https://data.ecoforecast.org/forecasts NEON Forecasts
+- https://data.ecoforecast.org/scores Scores of forecasts in the `forecasts` bucket
 
 Can use web interface, direct download URLs, or AWS-S3 API tools.
