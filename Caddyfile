@@ -1,14 +1,5 @@
-rstudio.ecoforecast.org {
-  
-  tls cboettig@gmail.com
 
-  reverse_proxy rstudio:8787 {
-    header_up Host {host}
-  }
-
-}
-
-minio.ecoforecast.org {
+data.ecoforecast.org {
 
     tls cboettig@gmail.com
     reverse_proxy minio:9000 {
@@ -19,18 +10,21 @@ minio.ecoforecast.org {
     }
 }
 
-
 status.ecoforecast.org {
-
   tls cboettig@gmail.com
   reverse_proxy monitor:19999 
 
 }
 
-shiny.ecoforecast.org {
-  
+rstudio.ecoforecast.org {
   tls cboettig@gmail.com
+  reverse_proxy rstudio:8787 {
+    header_up Host {host}
+  }
+}
 
+shiny.ecoforecast.org {
+  tls cboettig@gmail.com
   reverse_proxy shiny:3838 {
     header_up Host {host}
   }

@@ -32,8 +32,11 @@ services:
     image: rocker/geospatial
     restart: always
     volumes:
-      - /efi_neon_challenge/users:/home
+      - /efi_neon_challenge:/efi_neon_challenge
+      - /home/cboettig/Documents:/home/rstudio/Documents
     env_file: ./private_env.sh
+    ports:
+      - 8787:8787
 
   shiny:
     image: rocker/shiny-verse
