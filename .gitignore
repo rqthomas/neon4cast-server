@@ -1,2 +1,4 @@
 minio_env.sh
-private_env.sh
+rstudio_env.sh
+log/*
+

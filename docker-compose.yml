@@ -4,7 +4,7 @@ services:
   caddy:
     image: caddy
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./config/Caddyfile:/etc/caddy/Caddyfile
       - ./.caddy/:/data
     ports:
       - 80:80
@@ -17,15 +17,26 @@ services:
     restart: always
     volumes:
       - /efi_neon_challenge:/data    
-    env_file: minio_env.sh
+    env_file: ./config/minio_env.sh
     ports:
       - 9000:9000
- 
+
+  cron:
+    build: 
+      context: cron-container
+    image: eco4cast/cron
+    restart: always
+    volumes:
+      - ./Rscript:/Rscript
+      - ./cron.d:/etc/cron.d
+      - ./log/cron:/var/log
+      - /efi_neon_challenge:/efi_neon_challenge
+
   noaa_gefs:
     image: rqthomas/noaa_gefs_download_downscale
     restart: always
     volumes:
-      - ./noaa_gefs_config:/noaa/config
+      - ./config/noaa_gefs_config:/noaa/config
       - /efi_neon_challenge/drivers/NOAA_GEFS:/noaa/data
 
   rstudio:
@@ -34,7 +45,7 @@ services:
     volumes:
       - /efi_neon_challenge:/efi_neon_challenge
       - /home/cboettig/Documents:/home/rstudio/Documents
-    env_file: ./private_env.sh
+    env_file: ./config/rstudio_env.sh
     ports:
       - 8787:8787
 
@@ -44,8 +55,8 @@ services:
     ports: 
       - 3838:3838
     volumes:
-      - ./shinyapps/:/srv/shiny-server
-      - ./shinylog/:/var/log/shiny-server
+      - ./shiny/shinyapps/:/srv/shiny-server
+      - ./shiny/shinylog/:/var/log/shiny-server
 
   ## not necessary, just for convenience 
   monitor:
