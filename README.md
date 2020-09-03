@@ -25,9 +25,10 @@ git clone https://github.com/eco4cast/ci-server/ && cd ci-server
 
 ### Configuration
 
-- `minio` requires a user key and password, fill out the `minio_env_template.sh` and save it as `minio_env.sh`.  
-- `rstudio` requires a password, fill out `private_env_template.sh` and save as `private_env.sh`.  (Username is 'rstudio').
-- Edit `Caddyfile` for your own domain name, if desired.  Otherwise, omit caddy and connect to containers using the port numbers shown in the `docker-compose.yml`.
+- In `config/` dir:
+  - `minio` requires a user key and password, fill out the `minio_env_template.sh` and save it as `minio_env.sh`.  
+  - `rstudio` requires a password, fill out `rstudio_env_template.sh` and save as `rstudio_env.sh`.  (Username is 'rstudio').
+  - Edit `Caddyfile` for your own domain name, if desired.  Otherwise, omit caddy and connect to containers using the port numbers shown in the `docker-compose.yml`.
 - Edit volume mappings as desired inside `docker-compose.yml`.  
 
 Bring up all the services automatically with `docker-compose up -d`, or bring up individual services by name: (may require prepending commands with `sudo`)
