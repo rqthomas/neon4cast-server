@@ -1,5 +1,5 @@
 ## Run every six hours: (https://crontab.guru/#0_*/6_*_*_*)
-0 */6 * * * /usr/local/bin/Rscript /Rscript/noaa/launch_download_downscale.R >> /var/log/noaa.log
+0 */6 * * * /usr/local/bin/Rscript /Rscript/noaa/launch_download_downscale.R 2>>&1 /var/log/noaa.log
 
 ## Uncomment for a test that runs prints "Hello World!" every 1 minute to this logfile
 # * *   * * * /usr/local/bin/Rscript /Rscript/hello_world.R >> /var/log/cron.log

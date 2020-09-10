@@ -32,12 +32,14 @@ services:
       - ./log/cron:/var/log
       - /efi_neon_challenge:/efi_neon_challenge
 
-  noaa_gefs:
-    image: rqthomas/noaa_gefs_download_downscale
-    restart: always
-    volumes:
-      - ./config/noaa_gefs_config:/noaa/config
-      - /efi_neon_challenge/drivers/NOAA_GEFS:/noaa/data
+
+        #  This is now part of the cron jobs
+        #  noaa_gefs:
+        #image: rqthomas/noaa_gefs_download_downscale
+        # restart: always
+        # volumes:
+        #- ./config/noaa_gefs_config:/noaa/config
+        #- /efi_neon_challenge/drivers/NOAA_GEFS:/noaa/data
 
   rstudio:
     image: rocker/geospatial

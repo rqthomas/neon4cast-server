@@ -1,5 +1,7 @@
 #Script to download neon data used in NEON Ecological Forecasting Challenge
 
+print("Running download.R at", Sys.time())
+
 renv::restore()
 
 Sys.setenv("NEONSTORE_HOME" = "/efi_neon_challenge/neonstore")

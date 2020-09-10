@@ -151,10 +151,10 @@
     },
     "fields": {
       "Package": "fields",
-      "Version": "10.3",
+      "Version": "11.4",
       "Source": "Repository",
       "Repository": "RSPM",
-      "Hash": "30bd08fe4cf31558f3d8914694cd8065"
+      "Hash": "db57ed452daca391fcf3f64417ff61a1"
     },
     "generics": {
       "Package": "generics",
@@ -165,10 +165,10 @@
     },
     "glue": {
       "Package": "glue",
-      "Version": "1.4.1",
+      "Version": "1.4.2",
       "Source": "Repository",
       "Repository": "RSPM",
-      "Hash": "f43e0d5e85ccb0a4045670c0607ee504"
+      "Hash": "6efd734b14c6471cfe443345f3e35e29"
     },
     "hms": {
       "Package": "hms",
@@ -186,10 +186,10 @@
     },
     "jsonlite": {
       "Package": "jsonlite",
-      "Version": "1.7.0",
+      "Version": "1.7.1",
       "Source": "Repository",
       "Repository": "RSPM",
-      "Hash": "2657f20b9a74c996c602e74ebe540b06"
+      "Hash": "1ec84e070b88b37ed169f19def40d47c"
     },
     "lattice": {
       "Package": "lattice",
@@ -249,8 +249,8 @@
       "RemoteRepo": "noaaGEFSpoint",
       "RemoteUsername": "rqthomas",
       "RemoteRef": "HEAD",
-      "RemoteSha": "4a8870668180f717ddf5c52c35c0b1977b185cdf",
-      "Hash": "855ee98ebcb74f79e852fb85b0af7779"
+      "RemoteSha": "55755b5a9e62f73f6fc43f10328acb5645f3479e",
+      "Hash": "391d4be82aeee97cd762098a5d06de0a"
     },
     "openssl": {
       "Package": "openssl",
@@ -284,8 +284,8 @@
       "Package": "rNOMADS",
       "Version": "2.5.0",
       "Source": "Repository",
-      "Repository": null,
-      "Hash": "5a2726659415109c9edda892246a11ea"
+      "Repository": "RSPM",
+      "Hash": "491f2046b21f78b6a10a07173e70f775"
     },
     "readr": {
       "Package": "readr",
@@ -401,10 +401,10 @@
     },
     "vctrs": {
       "Package": "vctrs",
-      "Version": "0.3.2",
+      "Version": "0.3.4",
       "Source": "Repository",
       "Repository": "RSPM",
-      "Hash": "5ba3006888ac62fd5e97b208d00d3317"
+      "Hash": "0bc90078aeee42f2520b1d0a33bd6758"
     },
     "xml2": {
       "Package": "xml2",
