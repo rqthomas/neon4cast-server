@@ -27,7 +27,7 @@ services:
     image: eco4cast/cron
     restart: always
     volumes:
-      - ./Rscript:/Rscript
+      - ../scripts:/scripts
       - ./cron.d:/etc/cron.d
       - ./log/cron:/var/log
       - /efi_neon_challenge:/efi_neon_challenge
