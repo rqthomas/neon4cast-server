@@ -1,6 +1,7 @@
 FROM rocker/geospatial
 
 RUN apt-get update && apt-get -y install cron
+RUN apt-get update && apt-get -y install jags
 RUN install2.r renv cronR
 
 
