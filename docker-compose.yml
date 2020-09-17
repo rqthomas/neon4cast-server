@@ -29,7 +29,7 @@ services:
     volumes:
       - ../scripts:/scripts
       - ./cron.d:/etc/cron.d
-      - ./log/cron:/var/log
+      - /efi_neon_challenge/log/cron:/var/log
       - /efi_neon_challenge:/efi_neon_challenge
 
   rstudio:
@@ -48,8 +48,8 @@ services:
     ports: 
       - 3838:3838
     volumes:
-      - ./shiny/shinyapps/:/srv/shiny-server
-      - ./shiny/shinylog/:/var/log/shiny-server
+#     - ../shinyapp/:/srv/shiny-server
+      - /efi_neon_challenge/log/shiny:/var/log/shiny-server
 
   ## not necessary, just for convenience 
   monitor:
