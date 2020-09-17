@@ -48,7 +48,7 @@ services:
     ports: 
       - 3838:3838
     volumes:
-#     - ../shinyapp/:/srv/shiny-server
+      - ../shinyapp/:/srv/shiny-server
       - /efi_neon_challenge/log/shiny:/var/log/shiny-server
 
   ## not necessary, just for convenience 
