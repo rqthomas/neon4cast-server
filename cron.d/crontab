@@ -1,14 +1,13 @@
 ## Run every six hours: (https://crontab.guru/#0_*/6_*_*_*)
-0 */6 * * * /usr/local/bin/Rscript /scripts/noaa/launch_download_downscale.R 2>>&1 /var/log/noaa.log
+0 */6 * * * /usr/local/bin/Rscript /scripts/ci-server-noaa-download/launch_download_downscale.R 2>>&1 /var/log/noaa.log
 
 ## Weekly (Thurs at 1900)
 0 19 * * 4 /usr/local/bin/Rscript /scripts/NEON-community-forecast/01_download.R 2>>&1 /var/log/beetle.log
 10 19 * * 4 /usr/local/bin/Rscript /scripts/NEON-community-forecast/02_target.R 2>>&1 /var/log/beetle.log
 20 19 * * 4 /usr/local/bin/Rscript /scripts/NEON-community-forecast/03_forecast.R 2>>&1 /var/log/beetle.log
 30 19 * * 4 /usr/local/bin/Rscript /scripts/NEON-community-forecast/04_score.R 2>>&1 /var/log/beetle.log
-
-
-
+0 19 * * 4 /usr/local/bin/Rscript /scripts/RCN_freshwater/02_generate_targets_aquatics.R 2>>&1 /var/log/aquatics.log
+10 19 * * 4 /usr/local/bin/Rscript /scripts/RCN_freshwater/03_generate_null_forecast_aquatics.R 2>>&1 /var/log/aquatics.log
 
 ## Daily at 9 am
 0 9 * * * /usr/local/bin/Rscript /scripts/neon_challenge/download.R >> /var/log/download.log
