@@ -1,19 +1,20 @@
 ## Run every six hours: (https://crontab.guru/#0_*/6_*_*_*)
-0 */6 * * * /usr/local/bin/Rscript /scripts/neon4cast-noaa-download/launch_download_downscale.R 2>>&1 /var/log/noaa.log
+0 */6 * * * cd /scripts/neon4cast-noaa-download/ && /usr/local/bin/Rscript launch_download_downscale.R 2>&1 /var/log/noaa.log
 
-## Weekly (Thurs at 1900)
-10 19 * * 4 /usr/local/bin/Rscript /scripts/NEON-community-forecast/02_target.R 2>>&1 /var/log/beetle.log
-20 19 * * 4 /usr/local/bin/Rscript /scripts/NEON-community-forecast/03_forecast.R 2>>&1 /var/log/beetle.log
-30 19 * * 4 /usr/local/bin/Rscript /scripts/NEON-community-forecast/04_score.R 2>>&1 /var/log/beetle.log
-0 19 * * 4 /usr/local/bin/Rscript /scripts/RCN_freshwater/02_generate_targets_aquatics.R 2>>&1 /var/log/aquatics.log
-10 19 * * 4 /usr/local/bin/Rscript /scripts/RCN_freshwater/03_generate_null_forecast_aquatics.R 2>>&1 /var/log/aquatics.log
+## Weekly (Friday at 1900)
+10 17 * * 5 cd /scripts/NEON-community-forecast/  && /usr/local/bin/Rscript 02_target.R 2>&1 /var/log/beetle.log
+20 17 * * 5 cd /scripts/NEON-community-forecast/  && /usr/local/bin/Rscript 03_forecast.R 2>&1 /var/log/beetle.log
+30 17 * * 5 cd /scripts/NEON-community-forecast/  && /usr/local/bin/Rscript 04_score.R 2>&1 /var/log/beetle.log
 
-## Daily at 9 am
-0 9 * * * /usr/local/bin/Rscript /scripts/neon4cast-neon-download/download.R >> 2>>&1 /var/log/download.log
+0 17 * * 5 cd /scripts/RCN_freshwater/  && /usr/local/bin/Rscript 02_generate_targets_aquatics.R 2>&1 /var/log/aquatics.log
+10 17 * * 5 cd /scripts/RCN_freshwater/ && /usr/local/bin/Rscript 03_generate_null_forecast_aquatics.R 2>&1 /var/log/aquatics.log
+
+## Daily at 1620 am
+20 16 * * *  cd  /scripts/neon4cast-neon-download && /usr/local/bin/Rscript download.R 2>&1 /var/log/download.log
 
 
 ## Weekly (Sunday at midnight)
 0 0 * * 0 /usr/local/bin/Rscript --version >> /var/log/cron.log
 
 ## Uncomment for a test that runs prints "Hello World!" every 1 minute to this logfile
-* *   * * * /usr/local/bin/Rscript /scripts/hello_world.R >> /var/log/cron.log
+* *   * * * /usr/local/bin/Rscript /scripts/hello_world.R 2>&1 /var/log/cron.log
