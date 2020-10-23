@@ -5,8 +5,7 @@ RUN apt-get update && apt-get -y install jags
 RUN install2.r renv cronR
 
 
-COPY cron.sh /usr/local/bin/cron.sh
-CMD ["bash", "-c", "/usr/local/bin/cron.sh"]
+COPY cron.sh /etc/services.d/cron/run
 
 ## Usage notes: 
 ## docker run --rm -ti -v $(pwd)/Rscript:/Rscript -v $(pwd)/cron.d:/etc/cron.d eco4cast/cron  
