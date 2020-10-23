@@ -18,8 +18,6 @@ services:
     volumes:
       - /${EFI}:/data    
     env_file: ./config/minio_env.sh
-    ports:
-      - 9000:9000
 
   rstudio:
     build: 
@@ -29,19 +27,16 @@ services:
     volumes:
       - /${EFI}/log/cron:/var/log
       - /${EFI}:/efi_neon_challenge
-      - ../eco4cast:/home/rstudio/Documents
+      - ..:/home/rstudio/Documents
+      - /opt/local/renv/cache:/renv/cache
     env_file: ./config/rstudio_env.sh
-    ports:
-      - 8787:8787
 
   shiny:
     image: rocker/shiny-verse
     restart: always
-    ports: 
-      - 3838:3838
     volumes:
       - ../neon4cast-shiny:/srv/shiny-server
-      - /${EFI}/log/shiny:/var/log/shiny-server
+      - /${EFI}/log/shiny:/var/log/h shiny-server
 
   ## not necessary, just for convenience 
   monitor:
@@ -55,5 +50,3 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     security_opt: 
       - apparmor=unconfined
-    ports:
-      - 19999:19999
