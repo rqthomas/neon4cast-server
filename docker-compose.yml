@@ -16,7 +16,7 @@ services:
     command: server /data
     restart: always
     volumes:
-      - /vol_c:/data    
+      - /${EFI}:/data    
     env_file: ./config/minio_env.sh
     ports:
       - 9000:9000
@@ -27,8 +27,8 @@ services:
     image: eco4cast/cron
     restart: always
     volumes:
-      - /vol_c/log/cron:/var/log
-      - /vol_c:/efi_neon_challenge
+      - /${EFI}/log/cron:/var/log
+      - /${EFI}:/efi_neon_challenge
       - /home/cboettig/Documents/eco4cast:/home/rstudio/Documents
     env_file: ./config/rstudio_env.sh
     ports:
@@ -41,7 +41,7 @@ services:
       - 3838:3838
     volumes:
       - ../neon4cast-shiny:/srv/shiny-server
-      - /vol_c/log/shiny:/var/log/shiny-server
+      - /${EFI}/log/shiny:/var/log/shiny-server
 
   ## not necessary, just for convenience 
   monitor:
