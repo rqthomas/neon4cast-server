@@ -29,7 +29,7 @@ services:
     volumes:
       - /${EFI}/log/cron:/var/log
       - /${EFI}:/efi_neon_challenge
-      - /home/cboettig/Documents/eco4cast:/home/rstudio/Documents
+      - ../eco4cast:/home/rstudio/Documents
     env_file: ./config/rstudio_env.sh
     ports:
       - 8787:8787
