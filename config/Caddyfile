@@ -1,7 +1,7 @@
 
-data.ecoforecast.org {
+data.rquinnthomas.com {
 
-    tls cboettig@gmail.com
+    tls rqthomas@vt.edu
     reverse_proxy minio:9000 {
         header_up X-Forwarded-Proto {scheme}
         header_up X-Forwarded-Host {host}
@@ -10,21 +10,21 @@ data.ecoforecast.org {
     }
 }
 
-status.ecoforecast.org {
-  tls cboettig@gmail.com
+status.rquinnthomas.com {
+  tls rqthomas@vt.edu
   reverse_proxy monitor:19999 
 
 }
 
-rstudio.ecoforecast.org {
-  tls cboettig@gmail.com
+rstudio.rquinnthomas.com {
+  tls rqthomas@vt.edu
   reverse_proxy rstudio:8787 {
     header_up Host {host}
   }
 }
 
-shiny.ecoforecast.org {
-  tls cboettig@gmail.com
+shiny.rquinnthomas.com {
+  tls rqthomas@vt.edu
   reverse_proxy shiny:3838 {
     header_up Host {host}
   }
