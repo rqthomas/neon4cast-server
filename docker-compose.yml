@@ -26,9 +26,8 @@ services:
     restart: always
     volumes:
       - /${EFI}/log/cron:/var/log
-      - /${EFI}:/efi_neon_challenge
+      - /${EFI}:/data
       - ..:/home/rstudio/Documents
-      - /opt/local/renv/cache:/renv/cache
     env_file: ./config/rstudio_env.sh
 
   shiny:
