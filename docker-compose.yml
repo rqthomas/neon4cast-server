@@ -16,7 +16,7 @@ services:
     command: server /data
     restart: always
     volumes:
-      - /${EFI}:/data    
+      - /data:/data    
     env_file: ./config/minio_env.sh
 
   rstudio:
@@ -25,8 +25,8 @@ services:
     image: eco4cast/cron
     restart: always
     volumes:
-      - /${EFI}/log/cron:/var/log
-      - /${EFI}:/efi_neon_challenge
+      - /data/log/cron:/var/log
+      - /data:/data
       - ..:/home/rstudio/Documents
       - /opt/local/renv/cache:/renv/cache
     env_file: ./config/rstudio_env.sh
@@ -36,7 +36,7 @@ services:
     restart: always
     volumes:
       - ../neon4cast-shiny:/srv/shiny-server
-      - /${EFI}/log/shiny:/var/log/h shiny-server
+      - /data/log/shiny:/var/log/h shiny-server
 
   ## not necessary, just for convenience 
   monitor:
