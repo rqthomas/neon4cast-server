@@ -13,7 +13,7 @@ services:
 
   minio: 
     image: minio/minio
-    command: server /data
+    command: server --console-address :9001 /data
     restart: always
     volumes:
       - /${EFI}:/data    
