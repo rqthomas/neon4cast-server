@@ -9,43 +9,45 @@ services:
     ports:
       - 80:80
       - 443:443
+      - 9001:9001
     restart: always
 
   minio: 
     image: minio/minio
-    command: server /data
+    command: server --console-address :9001 /data
     restart: always
     volumes:
-      - /${EFI}:/data    
+      - /${S3BASE}:/data
     env_file: ./config/minio_env.sh
 
   rstudio:
     build: 
-      context: . 
+      context: .
     image: eco4cast/cron
     restart: always
     volumes:
-      - /${EFI}/log/cron:/var/log
-      - /${EFI}:/data
-      - ..:/home/rstudio/Documents
+      - /${S3BASE}/log/cron:/var/log
+      - /${S3BASE}:/data
+      - /home/rqthomas/eco4cast/rstudio/:/home/rstudio/
     env_file: ./config/rstudio_env.sh
-
-  shiny:
-    image: rocker/shiny-verse
-    restart: always
-    volumes:
-      - ../neon4cast-shiny:/srv/shiny-server
-      - /${EFI}/log/shiny:/var/log/h shiny-server
+    command: /bin/bash -c "chown -R rstudio.rstudio /home/rstudio/; /init"
+ 
+    #shiny:
+    #image: rocker/shiny-verse
+    #restart: always
+    #volumes:
+    #  - ../neon4cast-shiny:/srv/shiny-server
+    #  - /${EFI}/log/shiny:/var/log/h shiny-server
 
   ## not necessary, just for convenience 
-  monitor:
-    image: netdata/netdata  
-    restart: always
-    cap_add:
-      - SYS_PTRACE
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    security_opt: 
-      - apparmor=unconfined
+  #monitor:
+  # image: netdata/netdata  
+  #  restart: always
+  #  cap_add:
+  #    - SYS_PTRACE
+  #  volumes:
+  #    - /proc:/host/proc:ro
+  #    - /sys:/host/sys:ro
+  #    - /var/run/docker.sock:/var/run/docker.sock:ro
+  #  security_opt: 
+  #    - apparmor=unconfined
